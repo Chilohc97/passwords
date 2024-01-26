@@ -17,14 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let inputLongitud = document.getElementById('clongitud');
     let excluirForm = document.getElementById('excluir');
     let inputExcluir = document.getElementById('cexcluir');
-    excluirForm.style.display = "none";
-    longitudForm.style.display = "none";
-    opcionContraseñaForm.style.display = "none";
-    webForm.style.display = "none";
-    userForm.style.display = "none";
-    passwordForm.style.display = "none";
-    valorForm.style.display = "none";
-    claveForm.style.display = "none";
     function generador (longitud, excluir) {
         const alfabeto = "º1234567890'¡qwertyuiop`+asdfghjklñçzxcvbnm,.-ª!·$%&/()=?¿QWERTYUIOP^*ASDFGHJKLÑ¨ÇZXCVBNM;:_";
         let arr_contraseña = [];
