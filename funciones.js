@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                 break;
                   
-            case 'editar clave':
+            case 'editar clave maestra':
                 claveForm.style.display = "block";
                 claveForm.addEventListener('submit', function clav(event) {
                     event.preventDefault();
