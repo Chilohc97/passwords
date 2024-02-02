@@ -1,14 +1,12 @@
 
-
+// funcion 'event listener' activa al cargar html
 document.addEventListener('DOMContentLoaded', function () {
     
     let claveGuardada = localStorage.getItem('clave');
+    let acceso = document.getElementById('acceso'); 
+    let inputClave = document.getElementById('clave'); // input del usuario en el form
 
-
-    let acceso = document.getElementById('acceso');
-    let inputClave = document.getElementById('clave');
-
-
+    // si no existe una clave almacenada se cambia el prompt del form
     if (!claveGuardada) {
         acceso.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -23,11 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = 'interfaz.html';
         });
 
- 
+         
         document.querySelector('label[for="clave"]').textContent = 'Crear clave:';
         document.querySelector('button').textContent = 'Crear';
     } else {
-
+        // se coteja el input del form con la clave guardada
         acceso.addEventListener('submit', function (event) {
             event.preventDefault();
 
