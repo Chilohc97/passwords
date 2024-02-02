@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // guardamos cada form y su input en una variables
     let opcionesForm = document.getElementById('opciones');
     let inputOpcion = document.getElementById('opción');
     let webForm = document.getElementById('website');
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let inputLongitud = document.getElementById('clongitud');
     let excluirForm = document.getElementById('excluir');
     let inputExcluir = document.getElementById('cexcluir');
+    // funcion para la generacion de contraseñas
     function generador (longitud, excluir) {
         const alfabeto = "º1234567890'¡qwertyuiop`+asdfghjklñçzxcvbnm,.-ª!·$%&/()=?¿QWERTYUIOP^*ASDFGHJKLÑ¨ÇZXCVBNM;:_";
         let arr_contraseña = [];
@@ -36,19 +38,22 @@ document.addEventListener('DOMContentLoaded', function() {
         return arr_contraseña.join('');
     
     }
+    // primer 'event listener' para el form de opciones
     opcionesForm.addEventListener('submit', function(event){
         event.preventDefault();
         let opcionIntroducida = inputOpcion.value;
         opcionesForm.style.display = "none";
+        // condicional segun la opcion introducida
         switch(opcionIntroducida) {
             case 'crear':
                 webForm.style.display = "block";
-
+                // objeto para almacenar nueva cuenta
                 let entrada = {
                     web: '',
                     usuario: '',
                     contraseña: ''
                 }
+                // event listeners para cada form de informacion de cuenta
                 webForm.addEventListener('submit', function web(event){
                     event.preventDefault();
                     let webIntroducido = inputWeb.value;
@@ -75,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     let opcionIntroducida = inputGenerador.value;
                     event.target.removeEventListener('submit', cgenerador);
                     opcionContraseñaForm.style.display = "none";
+                    // condicional para tipo de contraseña
                     if (opcionIntroducida === 'manual') {
                         
                         passwordForm.style.display = "block";
@@ -144,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     usuario = inputUser.value;
                     event.target.removeEventListener('submit', user);
                     cuenta = localStorage.getItem(sitio + '/' + usuario);
+                    // despues de obtener input se coteja con informacion guardada
                     if (!cuenta) {
                         alert('No existe esta cuenta. Inténtalo de nuevo.')
                         window.location.reload();
@@ -174,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     nombre = usuarioIntroducido;
                     event.target.removeEventListener('submit', user);
                     let cuentaEliminar = localStorage.getItem(pagina + '/' + nombre);
+                    // condicional: si existe cuenta segun input se elimina
                     if (!cuentaEliminar) {
                         alert('No existe esta cuenta. Inténtalo de nuevo.');
                         window.location.reload();
@@ -190,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     let webs;
                     let valor;
                     let us;
+                    // se obtiene cuenta a editar
                     webForm.style.display = "block";
                     webForm.addEventListener('submit', function web(event) {
                         event.preventDefault();
@@ -209,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         event.target.removeEventListener('submit', user);
                         let cuentaEditar = localStorage.getItem(webs + '/' + us);
+                        
                         if (!cuentaEditar) {
                             alert('No existe esta cuenta. Inténtalo de nuevo.');
                             window.location.reload();
@@ -219,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         
                     })
-
+                    // se obtiene valor a editar
                     valorForm.addEventListener('submit', function edit(event) {
                         event.preventDefault();
                         let valorIntroducido = inputValor.value;
@@ -227,6 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       
                         event.target.removeEventListener('submit', edit);
                         valorForm.style.display = "none";
+                        // condicional: cambiar valor guardado segun input
                         if (valor === 'usuario') {
                             userForm.style.display = "block";
                             userForm.addEventListener('submit', function user(event) {
@@ -258,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 let opcionIntroducida = inputGenerador.value;
                                 event.target.removeEventListener('submit', cgenerador);
                                 opcionContraseñaForm.style.display = "none";
+                                // se le dan mismas opciones al usuario para editar contraseña
                                 if (opcionIntroducida === 'manual') {
                                     passwordForm.style.display = "block";
                                     passwordForm.addEventListener('submit', function password(event) {
