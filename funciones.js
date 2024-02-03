@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < excluir.length; i++) {
                 if (alfabeto[rand] == excluir[i]) {
                     found = true;
+                    break;
                 }
             }
             if (found == false) {
